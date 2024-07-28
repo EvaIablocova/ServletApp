@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.header {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header button {
+    margin: 0 10px;
+    padding: 10px 20px;
+}
+
+.content {
+    border: 1px solid #ccc;
+    padding: 50px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center; /* Центрирование содержимого */
+    align-items: center; /* Центрирование содержимого */
+    flex-direction: column; /* Расположение содержимого в столбик */
+    max-width: 800px;
+    width: 100%; /* Добавить ширину 100% для центрирования */
+    background-color: white;
+    text-align: center; /* Центрирование текста */
+    box-sizing: border-box; /* Обеспечить включение padding и border в ширину элемента */
+}
+
+.footer {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.nav-link.active {
+    background-color: #ffff99;
+}
+
+.quiz-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.quiz-card {
+    background-color: #3399ff;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+    width: 200px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.quiz-card .quiz-title {
+    background-color: #99cc99;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.quiz-card .btn {
+    background-color: #ffff66;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}

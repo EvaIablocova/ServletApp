@@ -1,4 +1,4 @@
-package com.javarush.quest.iablocova.startservlet;
+package com.javarush.quest.iablocova.controllers;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
@@ -10,14 +10,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet(name = "homeServlet", value = "/home")
-public class HomeServlet extends HttpServlet {
-    private String message;
+@WebServlet(name = "questionServlet", value = "/question")
+public class QuestionServlet extends HttpServlet {
 
     public void init() {
-        message = "Home page!";
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +22,17 @@ public class HomeServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String name = (String) session.getAttribute("usersName");
 
-        String path = "/homePage.jsp";
+
+        //1 - логика получения вопроса
+/*        ServletContext servletContext = request.getServletContext();
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);*/
+//        request.setAttribute("message", "This is the message from servlet!");
+//        request.setAttribute("greeting", "Hello world!");
+//        requestDispatcher.forward(request, response); // forward - конец ответа
+        // 2 - устанавиливаем в атрибуты запроса
+        //3 - отправляем этот запрос на отображение
+
+        String path = "/question.jsp";
 
         ServletContext servletContext = request.getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
