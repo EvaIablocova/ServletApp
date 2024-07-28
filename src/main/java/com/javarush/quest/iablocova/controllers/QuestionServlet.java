@@ -18,6 +18,9 @@ public class QuestionServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String quizName = request.getParameter("quizName");
+        request.setAttribute("quizName", quizName);
+
 
         HttpSession session = request.getSession();
         String name = (String) session.getAttribute("usersName");

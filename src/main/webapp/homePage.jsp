@@ -24,7 +24,7 @@
     <p>The mission of our company is to help people to become prepared for the interviews.<br>
         We collected a huge collection of questions, tasks and so many others interactive tasks.</p>
     <p>It's useful tool for graduates of courses about Java.</p>
-    <p>Enjoy our product!</p>
+    <p>Enjoy our product, <c:out value = "${sessionScope.usersName}"></c:out>!</p>
 </div>
 
 <%@include file="footer.jsp"%>

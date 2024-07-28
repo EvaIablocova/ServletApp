@@ -1,5 +1,7 @@
 package com.javarush.quest.iablocova.controllers;
 
+import java.io.IOException;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -9,36 +11,40 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import java.io.IOException;
+@WebServlet(name = "WelcomeServlet", value = "/welcome")
+public class WelcomeServlet extends HttpServlet {
 
-@WebServlet(name = "homeServlet", value = "/home")
-public class HomeServlet extends HttpServlet {
-    private String message;
-
-    public void init() {
-        message = "Home page!";
+    @Override
+    public void init() throws ServletException {
+        super.init();
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String path = "/welcome.jsp";
+
+        ServletContext servletContext = req.getServletContext();
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
+        requestDispatcher.forward(req, resp);
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = (String) request.getParameter("usersName");
+
+        HttpSession session = request.getSession();
+        session.setAttribute("usersName", name);
 
         String path = "/homePage.jsp";
         ServletContext servletContext = request.getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
-        requestDispatcher.forward(request, response); // forward - конец ответа
-    }
-
-/*    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String name = (String) request.getAttribute("usersName");
-        session.setAttribute("usersName", name);
-
-        String path = "/welcome.jsp";
-        ServletContext servletContext = request.getServletContext();
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
         requestDispatcher.forward(request, response);
-    }*/
-
-
-        public void destroy() {
     }
+
+    @Override
+    public void destroy() {
+        super.destroy();
+    }
+
 }
+
+    

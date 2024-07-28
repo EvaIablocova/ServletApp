@@ -15,6 +15,10 @@
 <%@include file="header.jsp"%>
 
 
+<h1>Quiz Name: <c:out value="${requestScope.quizName}"/></h1>
+<h2>Welcome, <c:out value = "${sessionScope.usersName}"></c:out></h2>
+
+
 <div class="quiz-container">
 
 

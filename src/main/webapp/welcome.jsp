@@ -11,28 +11,13 @@
 </head>
 <body>
 
+
 <%@include file="header.jsp"%>
 
-<div class="quiz-container">
-
-        <c:forEach var="quiz" items="${requestScope.arrayOfQuizzes}">
-            <div class="quiz-card">
-
-                <form action="/question" method="get">
-                     <div class="quiz-title"><c:out value = "${quiz.getNameOfQuiz()}"></c:out> </div>
-                     <input type="hidden" name="quizName" value="${quiz.getNameOfQuiz()}"/>
-                     <button type = "submit"  class="btn">Play</button>
-                </form>
-
-            </div>
-        </c:forEach>
-
-
-    <div class="quiz-card">
-        <div class="quiz-title">Quiz 2</div>
-        <div class="btn">Your score: 11/20 (in session)</div>
-    </div>
-</div>
+<form action="/welcome" method="post">
+    <input type="text" name="usersName" placeholder="Enter user name"/>
+    <button type = "submit"  class="btn">Send</button>
+</form>
 
 <%@include file="footer.jsp"%>
 
