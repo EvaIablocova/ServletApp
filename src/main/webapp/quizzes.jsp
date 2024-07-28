@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="styles.css">
 
 <!DOCTYPE html>
@@ -13,10 +14,21 @@
 <%@include file="header.jsp"%>
 
 <div class="quiz-container">
-    <div class="quiz-card">
-        <div class="quiz-title">Quiz 1</div>
-        <button class="btn">Play</button>
-    </div>
+
+
+    <form action="/question" method="get">
+
+        <c:forEach var="quiz" items="${requestScope.arrayOfQuizzes}">
+            <div class="quiz-card">
+                <div class="quiz-title"><c:out value = "${quiz.getNameOfQuiz()}"></c:out> </div>
+            <button type = "submit"  class="btn">Play</button>
+            </div>
+        </c:forEach>
+
+    </form>
+
+
+
     <div class="quiz-card">
         <div class="quiz-title">Quiz 2</div>
         <div class="btn">Your score: 11/20 (in session)</div>

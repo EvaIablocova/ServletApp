@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="styles.css">
 
 <!DOCTYPE html>
@@ -15,6 +16,8 @@
 
 
 <div class="quiz-container">
+
+
     <div class="quiz-content">
         <div class="quiz-title">Quiz 2</div>
         <div class="question">Text of the question 1111111</div>

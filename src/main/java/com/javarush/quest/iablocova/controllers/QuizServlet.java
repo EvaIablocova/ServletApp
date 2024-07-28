@@ -1,5 +1,7 @@
 package com.javarush.quest.iablocova.controllers;
 
+import com.javarush.quest.iablocova.BL.factory.CreationFactory;
+import com.javarush.quest.iablocova.BL.implementations.Quiz;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -33,6 +35,17 @@ public class QuizServlet extends HttpServlet {
 //    }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        CreationFactory factory = new CreationFactory();
+
+        request.setAttribute("arrayOfQuizzes", factory.getArrayOfQuizzes());
+
+//        request.setAttribute("JavaSyntaxQuiz", factory.getJavaSyntaxQuiz());
+//        request.setAttribute("JavaCoreQuiz", factory.getJavaCoreQuiz());
+//        request.setAttribute("JavaProfessionalQuiz", factory.getJavaProfessionalQuiz());
+//        request.setAttribute("JavaDataBaseQuiz", factory.getDataBaseQuiz());
+//        request.setAttribute("JavaSpringQuiz", factory.getSpringQuiz());
+
 
         String path = "/quizzes.jsp";
 
