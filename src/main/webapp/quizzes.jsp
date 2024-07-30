@@ -28,11 +28,6 @@
             </div>
         </c:forEach>
 
-
-    <div class="quiz-card">
-        <div class="quiz-title">Quiz 2</div>
-        <div class="btn">Your score: 11/20 (in session)</div>
-    </div>
 </div>
 
 <%@include file="footer.jsp"%>

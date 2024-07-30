@@ -1,8 +1,11 @@
 package com.javarush.quest.iablocova.BL.implementations;
 
 import com.javarush.quest.iablocova.BL.interfaces.IQuiz;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpSession;
 import lombok.Getter;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -28,5 +31,21 @@ public class Quiz implements IQuiz {
 //
 //        return new String();
 //    }
+
+    private int getQuizIdByName (HttpSession session, String quizName) throws ServletException, IOException {
+
+        int index=0;
+        ArrayList<Quiz> arrayOfQuizzes = (ArrayList<Quiz>) session.getAttribute("arrayOfQuizzes");
+
+        for (int i = 0; i < arrayOfQuizzes.size(); i++) {
+            String name = (arrayOfQuizzes.get(i)).getNameOfQuiz();
+            if (name.equals(quizName)) {
+                index = i;
+                break;
+            }
+        }
+
+        return index;
+    }
 
 }

@@ -86,3 +86,11 @@ body {
     border-radius: 10px;
 }
 
+.radio-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.radio-option input[type="radio"] {
+    margin-right: 10px;
+}

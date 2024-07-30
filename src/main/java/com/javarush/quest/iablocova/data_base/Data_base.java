@@ -15,11 +15,13 @@ public class Data_base {
         answers = new HashMap<>();
         answers.put("1", true);
         answers.put("2", false);
+        answers.put("3", false);
         arrayOfQuestions.add(new Question("Data_base 1", answers));
 
         answers = new HashMap<>();
         answers.put("8", true);
         answers.put("4", false);
+        answers.put("5", false);
         arrayOfQuestions.add(new Question("Data_base 2", answers));
     }
 

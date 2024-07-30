@@ -16,34 +16,38 @@
 
 <div class="card p-4">
     <form action="/question" method="get">
-        <input type="hidden" value="${requestScope.questionId}" readonly>
         <textarea type="text"readonly>${requestScope.TextOfQuestion}</textarea>
-    </form>
 
-    <form action="/question" method="post">
-        <button type="submit" name="action" value="yes" class="btn btn-primary mb-3">Yes</button>
-        <button type="submit" name="action" value="no" class="btn btn-primary mb-3">No</button>
+        <div class="radio-option">
+            <input type="radio" id="option1" name="option" value="1">
+            <label for="option1">${requestScope.Option1}</label>
+        </div>
+        <div class="radio-option">
+            <input type="radio" id="option2" name="option" value="2">
+            <label for="option2">${requestScope.Option2}</label>
+        </div>
+        <div class="radio-option">
+            <input type="radio" id="option3" name="option" value="3">
+            <label for="option3">${requestScope.Option3}</label>
+        </div>
     </form>
 
     <div class="btn-group">
         <!-- Форма для перехода к предыдущему вопросу -->
         <form action="/question" method="get">
             <input type="hidden" name="action" value="prev">
-            <input type="hidden" name="QuestionId" value="${questionId}">
             <button type="submit" class="btn btn-primary mb-3" style="margin-right: 10px;">Prev</button>
         </form>
 
         <!-- Форма для перехода к следующему вопросу -->
         <form action="/question" method="get">
             <input type="hidden" name="action" value="next">
-            <input type="hidden" name="QuestionId" value="${questionId}">
             <button type="submit" class="btn btn-primary mb-3" style="margin-left: 10px;">Next</button>
         </form>
     </div>
 
     <!-- Форма для перехода к результатам -->
-    <form action="/question" method="get">
-        <input type="hidden" name="action" value="results">
+    <form action="/results" method="get">
         <button type="submit" class="btn btn-primary btn-block mb-3">Go to results</button>
     </form>
 </div>
