@@ -32,7 +32,7 @@
 
             <tr>
                 <td><c:out value = "${question.getQuestion()}"></c:out></td>
-                <td>Item3</td>
+                <td><c:out value = "${sessionScope.arrayOfAnswers.get(0)}"></c:out></td>
                 <td>Item4</td>
             </tr>
 

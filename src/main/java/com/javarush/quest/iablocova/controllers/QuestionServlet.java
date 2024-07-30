@@ -36,9 +36,9 @@ public class QuestionServlet extends HttpServlet {
                 session.setAttribute("QuestionId", (int)0);
 
                 int len1 = getCurrentLengthOfQuiz(session, QuizIdByName);
-                ArrayList<Integer> arrayOfAnswers = new ArrayList<>(len1);
+                ArrayList<String> arrayOfAnswers = new ArrayList<>(len1);
                 for (int i = 0; i < len1; i++) {
-                    arrayOfAnswers.add(0); // Добавляем элемент со значением 0
+                    arrayOfAnswers.add("not selected yet"); // Добавляем элемент со значением 0
                 }
 
                 session.setAttribute("arrayOfAnswers", arrayOfAnswers);
