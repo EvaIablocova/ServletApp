@@ -23,4 +23,10 @@ public class Quiz implements IQuiz {
         arrayOfQuestions = arrayOfQuestionsFromDb;
     }
 
+//    public String getTextOfQuestionById (int id, int currentQuizIndexInArrayOfQuizzes){
+//
+//
+//        return new String();
+//    }
+
 }

@@ -14,10 +14,12 @@
 
 <%@include file="header.jsp"%>
 
+<div class="enterName">
 <form action="/welcome" method="post">
     <input type="text" name="usersName" placeholder="Enter user name"/>
-    <button type = "submit"  class="btn">Send</button>
+    <button type = "submit" class="btn btn-outline-secondary">Send</button>
 </form>
+</div>
 
 <%@include file="footer.jsp"%>
 

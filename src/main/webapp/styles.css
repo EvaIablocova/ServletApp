@@ -31,6 +31,10 @@ body {
     box-sizing: border-box; /* Обеспечить включение padding и border в ширину элемента */
 }
 
+.enterName{
+    text-align: center;
+}
+
 .footer {
     margin: 20px;
     padding: 10px;
@@ -81,3 +85,4 @@ body {
     padding: 10px 20px;
     border-radius: 10px;
 }
+

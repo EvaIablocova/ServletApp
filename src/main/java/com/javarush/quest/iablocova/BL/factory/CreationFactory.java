@@ -32,4 +32,6 @@ public class CreationFactory {
         arrayOfQuizzes.add(SpringQuiz);
     }
 
+
+
 }

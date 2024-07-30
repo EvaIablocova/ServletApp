@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -37,8 +38,8 @@ public class QuizServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         CreationFactory factory = new CreationFactory();
-
-        request.setAttribute("arrayOfQuizzes", factory.getArrayOfQuizzes());
+        HttpSession session = request.getSession();
+        session.setAttribute("arrayOfQuizzes", factory.getArrayOfQuizzes());
 
 //        request.setAttribute("JavaSyntaxQuiz", factory.getJavaSyntaxQuiz());
 //        request.setAttribute("JavaCoreQuiz", factory.getJavaCoreQuiz());

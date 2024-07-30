@@ -1,9 +1,11 @@
 package com.javarush.quest.iablocova.BL.implementations;
 
 import com.javarush.quest.iablocova.BL.interfaces.IQuestion;
+import lombok.Getter;
 
 import java.util.HashMap;
 
+@Getter
 public class Question implements IQuestion {
 
     String question;

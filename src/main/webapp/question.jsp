@@ -14,37 +14,41 @@
 
 <%@include file="header.jsp"%>
 
+<div class="card p-4">
+    <form action="/question" method="get">
+        <input type="hidden" value="${requestScope.questionId}" readonly>
+        <textarea type="text"readonly>${requestScope.TextOfQuestion}</textarea>
+    </form>
 
-<h1>Quiz Name: <c:out value="${requestScope.quizName}"/></h1>
-<h2>Welcome, <c:out value = "${sessionScope.usersName}"></c:out></h2>
+    <form action="/question" method="post">
+        <button type="submit" name="action" value="yes" class="btn btn-primary mb-3">Yes</button>
+        <button type="submit" name="action" value="no" class="btn btn-primary mb-3">No</button>
+    </form>
 
+    <div class="btn-group">
+        <!-- Форма для перехода к предыдущему вопросу -->
+        <form action="/question" method="get">
+            <input type="hidden" name="action" value="prev">
+            <input type="hidden" name="QuestionId" value="${questionId}">
+            <button type="submit" class="btn btn-primary mb-3" style="margin-right: 10px;">Prev</button>
+        </form>
 
-<div class="quiz-container">
-
-
-    <div class="quiz-content">
-        <div class="quiz-title">Quiz 2</div>
-        <div class="question">Text of the question 1111111</div>
-        <ul class="options">
-            <li>
-                <input type="radio" name="option" id="option1">
-                <label for="option1">option 1</label>
-            </li>
-            <li>
-                <input type="radio" name="option" id="option2">
-                <label for="option2">option 2</label>
-            </li>
-            <li>
-                <input type="radio" name="option" id="option3">
-                <label for="option3">option 3</label>
-            </li>
-        </ul>
-        <div class="nav-buttons">
-            <button class="btn btn-light">&larr; prev</button>
-            <button class="btn btn-light">next &rarr;</button>
-        </div>
+        <!-- Форма для перехода к следующему вопросу -->
+        <form action="/question" method="get">
+            <input type="hidden" name="action" value="next">
+            <input type="hidden" name="QuestionId" value="${questionId}">
+            <button type="submit" class="btn btn-primary mb-3" style="margin-left: 10px;">Next</button>
+        </form>
     </div>
+
+    <!-- Форма для перехода к результатам -->
+    <form action="/question" method="get">
+        <input type="hidden" name="action" value="results">
+        <button type="submit" class="btn btn-primary btn-block mb-3">Go to results</button>
+    </form>
 </div>
+
+
 
 <%@include file="footer.jsp"%>
 

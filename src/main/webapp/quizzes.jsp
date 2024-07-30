@@ -15,12 +15,13 @@
 
 <div class="quiz-container">
 
-        <c:forEach var="quiz" items="${requestScope.arrayOfQuizzes}">
+        <c:forEach var="quiz" items="${sessionScope.arrayOfQuizzes}">
             <div class="quiz-card">
 
                 <form action="/question" method="get">
                      <div class="quiz-title"><c:out value = "${quiz.getNameOfQuiz()}"></c:out> </div>
                      <input type="hidden" name="quizName" value="${quiz.getNameOfQuiz()}"/>
+                     <input type="hidden" name="action" value="getFirstQuestion"/>
                      <button type = "submit"  class="btn">Play</button>
                 </form>
 
