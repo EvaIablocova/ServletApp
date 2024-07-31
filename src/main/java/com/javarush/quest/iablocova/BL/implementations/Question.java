@@ -36,13 +36,13 @@ public class Question implements IQuestion {
         optionsOfAnswer = optionsOfAnswerFromDb;
     }
 
-    public String getRightAnswer (Question curQuestion){
+    public String getRightAnswer (){
         String rightAnswer = null;
 //        ArrayList<Quiz> arrayOfQuizzes = (ArrayList<Quiz>) session.getAttribute("arrayOfQuizzes");
 //        Quiz currentQuiz = arrayOfQuizzes.get(currentQuizIndexInArrayOfQuizzes);
 //        var curArrayOfQuestions = currentQuiz.getArrayOfQuestions();
 //        Question curQuestion = curArrayOfQuestions.get(QuestionId);
-        var curOptionsOfAnswer = curQuestion.getOptionsOfAnswer();
+        var curOptionsOfAnswer = this.getOptionsOfAnswer();
 
         for (var answer: curOptionsOfAnswer){
             if (answer.isFair()){

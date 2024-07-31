@@ -3,6 +3,7 @@ package com.javarush.quest.iablocova.controllers;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.javarush.quest.iablocova.BL.implementations.Quiz;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -29,6 +30,16 @@ public class ResultServlet extends HttpServlet {
         // array of questions -- request scope
         // array of right answers -- request scope
 
+        ArrayList<String> arrayOfAnswers = (ArrayList<String>)session.getAttribute("arrayOfAnswers");
+        var arrayOfQuestions = (((ArrayList<Quiz>)session.getAttribute("arrayOfQuizzes")).get((int)session.getAttribute("currentQuizIndexInArrayOfQuizzes"))).getArrayOfQuestions();
+        int countRightQuestions = 0;
+        for (var question: arrayOfQuestions){
+            if (question.getRightAnswer() == arrayOfAnswers.get(question.getNumber() - 1)){
+                countRightQuestions ++;
+            }
+        }
+
+        session.setAttribute("countRightQuestions", (int)countRightQuestions);
 
         String path = "/results.jsp";
 

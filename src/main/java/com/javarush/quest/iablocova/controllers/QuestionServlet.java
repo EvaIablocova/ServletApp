@@ -62,9 +62,9 @@ public class QuestionServlet extends HttpServlet {
         int index = (int) session.getAttribute("QuestionId");
 
         if (index == -1){
-            path = "/results.jsp";
+            path = "/results";
         } else if (index == -2){
-            path = "/quizzes.jsp";
+            path = "/quizzes";
         } else {
             String text = getCurrentTextOfQuestion(request, session);
             request.setAttribute("TextOfQuestion", text);

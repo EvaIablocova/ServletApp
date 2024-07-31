@@ -15,7 +15,7 @@
 <%@include file="header.jsp"%>
 
 <div class="container mt-5">
-    <p class="h2">Your Results</p>
+    <p class="h2">Your Results: ${sessionScope.countRightQuestions} / <c:out value = "${((sessionScope.arrayOfQuizzes[sessionScope.currentQuizIndexInArrayOfQuizzes]).getArrayOfQuestions()).size()}"></c:out></p>
     <table class="table table-dark table-hover">
         <thead>
         <tr>
@@ -35,7 +35,7 @@
                 <td><c:out value = "${question.getNumber()}"></c:out></td>
                 <td><c:out value = "${question.getQuestion()}"></c:out></td>
                 <td><c:out value = "${sessionScope.arrayOfAnswers.get(question.getNumber()-1)}"></c:out></td>
-                <td><c:out value = "${question.getRightAnswer(question)}"></c:out></td>
+                <td><c:out value = "${question.getRightAnswer()}"></c:out></td>
             </tr>
 
         </c:forEach>
