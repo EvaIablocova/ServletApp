@@ -33,8 +33,7 @@ body {
     box-sizing: border-box;
 }
 
-
-.enterName{
+.enterName {
     text-align: center;
 }
 
@@ -94,6 +93,7 @@ body {
     align-items: center;
     margin-bottom: 10px;
 }
+
 .radio-option input[type="radio"] {
     margin-right: 10px;
 }
@@ -110,5 +110,18 @@ textarea {
     font-weight: bold;
     font-size: 1.2em; /* Настройка размера текста */
     margin-bottom: 20px; /* Добавляет отступ снизу */
+}
+
+.quiz-image {
+    width: 20px; /* Ширина изображения */
+    height: 15px; /* Высота изображения */
+    object-fit: cover; /* Опционально: подгоняет изображение, чтобы оно заполнило весь контейнер */
+    border-radius: 10px; /* Закругляет углы изображения, если нужно */
+    margin-bottom: 10px; /* Отступ снизу для разделения с заголовком */
+}
+
+.quiz-card img {
+    width: 20px;
+    height: 15px;
 }
 

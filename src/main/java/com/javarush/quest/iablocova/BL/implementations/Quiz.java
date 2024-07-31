@@ -14,15 +14,19 @@ public class Quiz implements IQuiz {
 
     String nameOfQuiz;
 
+    String quizImage;
+
     ArrayList <Question> arrayOfQuestions;
 
     public Quiz (){
         nameOfQuiz = new String();
+        quizImage = "";
         arrayOfQuestions = new ArrayList <Question>();
     }
 
-    public Quiz (ArrayList <Question> arrayOfQuestionsFromDb, String nameFromDb){
+    public Quiz (ArrayList <Question> arrayOfQuestionsFromDb, String nameFromDb, String quizImageFromDb){
         nameOfQuiz = nameFromDb;
+        quizImage = quizImageFromDb;
         arrayOfQuestions = arrayOfQuestionsFromDb;
     }
 
