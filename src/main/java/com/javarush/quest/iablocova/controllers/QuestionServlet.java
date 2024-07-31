@@ -1,5 +1,6 @@
 package com.javarush.quest.iablocova.controllers;
 
+import com.javarush.quest.iablocova.BL.implementations.Answer;
 import com.javarush.quest.iablocova.BL.implementations.Question;
 import com.javarush.quest.iablocova.BL.implementations.Quiz;
 import jakarta.servlet.RequestDispatcher;
@@ -12,10 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 @WebServlet(name = "questionServlet", value = "/question")
 public class QuestionServlet extends HttpServlet {
@@ -48,9 +46,11 @@ public class QuestionServlet extends HttpServlet {
                 session.setAttribute("QuestionId", QuestionId);
                 break;
             case "next":
-                ArrayList<Integer> arrayOfAnswers1 = (ArrayList<Integer>) session.getAttribute("arrayOfAnswers");
+                ArrayList<String> arrayOfAnswers1 = (ArrayList<String>) session.getAttribute("arrayOfAnswers");
                 QuestionId = nextQuestion(session, arrayOfAnswers1.size());
                 session.setAttribute("QuestionId", QuestionId);
+                break;
+            case "currentPage":
                 break;
             default:
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid action");
@@ -72,21 +72,12 @@ public class QuestionServlet extends HttpServlet {
             ArrayList<Quiz> arrayOfQuizzes = (ArrayList<Quiz>)session.getAttribute("arrayOfQuizzes");
             Quiz curQuiz = arrayOfQuizzes.get((int)session.getAttribute("currentQuizIndexInArrayOfQuizzes"));
             ArrayList <Question> arrayOfQuestions = curQuiz.getArrayOfQuestions();
-            HashMap<String, Boolean> optionsOfAnswer = arrayOfQuestions.get(index).getOptionsOfAnswer();
-            Iterator<Map.Entry<String, Boolean>> iterator = optionsOfAnswer.entrySet().iterator();
+            List<Answer> optionsOfAnswer = arrayOfQuestions.get(index).getOptionsOfAnswer();
 
-            if (iterator.hasNext()) {
-                Map.Entry<String, Boolean> entry = iterator.next();
-                request.setAttribute("Option1", entry.getKey());
-            }
-            if (iterator.hasNext()) {
-                Map.Entry<String, Boolean> entry = iterator.next();
-                request.setAttribute("Option2", entry.getKey());
-            }
-            if (iterator.hasNext()) {
-                Map.Entry<String, Boolean> entry = iterator.next();
-                request.setAttribute("Option3", entry.getKey());
-            }
+                request.setAttribute("Option1", (optionsOfAnswer.get(0)).getTextOfAnswer());
+                request.setAttribute("Option2", (optionsOfAnswer.get(1)).getTextOfAnswer());
+                request.setAttribute("Option3", (optionsOfAnswer.get(2)).getTextOfAnswer());
+
 
             path = "/question.jsp";
         }
@@ -161,18 +152,39 @@ public class QuestionServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        switch (action) {
-            case "yes":
-                yesAnswer(request, response);
+        HttpSession session = request.getSession();
+        ArrayList<String> arrayOfAnswers = (ArrayList<String>)session.getAttribute("arrayOfAnswers");
+
+        String option = request.getParameter("option");
+        int QuestionId = (int) session.getAttribute("QuestionId");
+
+        int currentQuizIndexInArrayOfQuizzes = (int) session.getAttribute ("currentQuizIndexInArrayOfQuizzes");
+
+        ArrayList<Quiz> arrayOfQuizzes = (ArrayList<Quiz>)session.getAttribute("arrayOfQuizzes");
+
+        var currentQuiz = arrayOfQuizzes.get(currentQuizIndexInArrayOfQuizzes);
+        var currentArrayOfQuestions = currentQuiz.getArrayOfQuestions();
+        Question currentQuestion = currentArrayOfQuestions.get(QuestionId);
+
+        var optionsOfAnswer = currentQuestion.getOptionsOfAnswer();
+
+        switch (option) {
+            case "option1":
+                arrayOfAnswers.set(QuestionId, (optionsOfAnswer.get(0).getTextOfAnswer()));
                 break;
-            case "no":
-                noAnswer(request, response);
+            case "option2":
+                arrayOfAnswers.set(QuestionId, (optionsOfAnswer.get(1).getTextOfAnswer()));
+                    break;
+                case "option3":
+                    arrayOfAnswers.set(QuestionId, (optionsOfAnswer.get(2).getTextOfAnswer()));
                 break;
             default:
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid action");
                 break;
         }
+
+        request.setAttribute("action", "currentPage");
+        doGet(request, response);
     }
 
     private HttpServletRequest yesAnswer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

@@ -19,6 +19,7 @@
     <table class="table table-dark table-hover">
         <thead>
         <tr>
+            <th scope="col">#</th>
             <th scope="col">Question</th>
             <th scope="col">Your answer</th>
             <th scope="col">Right answer</th>
@@ -31,9 +32,10 @@
         <c:forEach var="question" items="${(sessionScope.arrayOfQuizzes[sessionScope.currentQuizIndexInArrayOfQuizzes]).getArrayOfQuestions()}">
 
             <tr>
+                <td><c:out value = "${question.getNumber()}"></c:out></td>
                 <td><c:out value = "${question.getQuestion()}"></c:out></td>
-                <td><c:out value = "${sessionScope.arrayOfAnswers.get(0)}"></c:out></td>
-                <td>Item4</td>
+                <td><c:out value = "${sessionScope.arrayOfAnswers.get(question.getNumber()-1)}"></c:out></td>
+                <td><c:out value = "${question.getRightAnswer(question)}"></c:out></td>
             </tr>
 
         </c:forEach>

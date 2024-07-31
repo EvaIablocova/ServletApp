@@ -2,6 +2,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .header {
@@ -21,15 +23,16 @@ body {
     padding: 50px;
     margin: 20px auto;
     display: flex;
-    justify-content: center; /* Центрирование содержимого */
-    align-items: center; /* Центрирование содержимого */
-    flex-direction: column; /* Расположение содержимого в столбик */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     max-width: 800px;
-    width: 100%; /* Добавить ширину 100% для центрирования */
+    width: 100%;
     background-color: white;
-    text-align: center; /* Центрирование текста */
-    box-sizing: border-box; /* Обеспечить включение padding и border в ширину элемента */
+    text-align: center;
+    box-sizing: border-box;
 }
+
 
 .enterName{
     text-align: center;
@@ -94,3 +97,18 @@ body {
 .radio-option input[type="radio"] {
     margin-right: 10px;
 }
+
+textarea {
+    border: none;
+    outline: none;
+    resize: none;
+    font-weight: bold; /* Устанавливает жирный шрифт */
+    font-size: 1.2em; /* Настройка размера текста */
+}
+
+.question-text {
+    font-weight: bold;
+    font-size: 1.2em; /* Настройка размера текста */
+    margin-bottom: 20px; /* Добавляет отступ снизу */
+}
+
